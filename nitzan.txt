@@ -1,0 +1,481 @@
+import socket
+import math
+import datetime
+import collections
+import random
+from enum import Enum
+import webbrowser
+from turtle import *
+
+
+# import defaultdict
+# list
+def first_list():
+    b = ['a', 1, 'pytohon', (1, 2), [1, 2]]
+    a = {'a': 'one', 2: 'two'}
+    print(a['a'])
+    print(b[3])
+
+
+# the last value
+def second_list():
+    names = ['Alice', 'Bob', 'Craig', 'Diana', 'Eric']
+    print(names.pop())
+
+
+# get the computer id
+def getIp():
+    hostname = socket.gethostname()
+    IPAddr = socket.gethostbyname(hostname)
+    print("Your Computer Name is:" + hostname)
+    print("Your Computer IP Address is:" + IPAddr)
+
+
+# dictionary
+def capitalsByState():
+    state_capitals = {
+        'Arkansas': 'Little Rock',
+        'Colorado': 'Denver',
+        'California': 'Sacramento',
+        'Georgia': 'Atlanta'}
+    ca_capital = state_capitals['Colorado']
+    # state_capitals_to_un_known_state = defaultdict(lambda: 'it doesnt exsisit')
+    print(ca_capital)
+
+
+# inputs
+def userInput():
+    name = input("What is your name? ")
+    print("hello " + name)
+
+
+# calculator
+def calculator():
+    num1 = input("enter a number: ")
+    operator = input("enter a operator: ")
+    num2 = input("enter a number: ")
+    num1 = int(num1)
+    num2 = int(num2)
+    if operator == "+":
+        print(num1 + num2)
+    if operator == "-":
+        print(num1 - num2)
+    if operator == ":" or operator == "/":
+        print(num1 / num2)
+    if operator == "*":
+        print(num1 * num2)
+    if operator == "pow":
+        print(pow(num1, num2))
+
+
+def dir_math():
+    dir(math)
+
+
+# help(value) - find what it's doing.
+# set up class
+class my_class_object():
+    pass
+
+
+# how to do for
+def learn_for():
+    for i in range(1, 11, 1):
+        print(i)
+
+
+# different ways to show a string
+def to_show_string():
+    s = """wow"""
+    print(repr(s))  # Output: 'wow'
+    print(str(s))  # Output: wow
+    print(eval(repr(s))) == s  # Output: wow
+
+
+# a clock
+def show_the_time():
+    today = datetime.datetime.now()
+    print(str(today))  # Output: '2016-09-15 06:58:46.915000'
+    print(repr(today))  # Output: 'datetime.datetime(2016, 9, 15, 6, 58, 46, 915000)'
+
+
+# kind of objects
+def kind_of_object():
+    int_num = 10  # int value
+    float_num = 10.2  # float value
+    complex_num = 3.14  # complex value
+    long_num = 1234567  # long value0nt objects
+
+
+# how to do while
+def learn_while():
+    i = 1
+    while i <= 10:
+        print(i)
+        i = i + 1
+
+
+# salary calculation
+def salary_calculation():
+    # hours_employee_worked = input("How many hours did you work?")
+    # price_per_hour = input("How much do you get per hour?")
+    int_hours_employee_worked = 0  # int(hours_employee_worked)
+    int_price_per_hour = 0  # int(price_per_hour)
+    all_the_expenses = []
+    num_of_employee = 0
+    all_payment = 0
+    while int_price_per_hour != -999 or int_hours_employee_worked != -999:
+
+        hours_employee_worked = input("How many hours did you work?")
+        price_per_hour = input("How much do you get per hour?")
+
+        int_hours_employee_worked = int(hours_employee_worked)
+        int_price_per_hour = int(price_per_hour)
+
+        if int_hours_employee_worked < 0 or int_price_per_hour < 0:
+            len_all_the_expenses = len(all_the_expenses)
+            for payment in all_the_expenses:
+                all_payment += payment
+            print("the sum is : " + str(all_payment / len_all_the_expenses))
+            break
+
+        if int_hours_employee_worked > 150:
+            the_expenses = int_hours_employee_worked * int_price_per_hour + 250
+        else:
+            the_expenses = int_hours_employee_worked * int_price_per_hour
+        print("the Expenses per employee are: " + str(the_expenses))
+
+        all_the_expenses.append(the_expenses)
+        num_of_employee += 1
+        print(all_the_expenses)
+
+
+# Check similar organs between lists
+def Intersection():
+    print({1, 2, 3, 4, 5}.intersection({3, 4, 5, 6}))  # {3, 4, 5}
+    print({1, 2, 3, 4, 5} & {3, 4, 5, 6})  # {3, 4, 5}
+
+
+# Add common organ organs to the list
+def Union():
+    print({1, 2, 3, 4, 5}.union({3, 4, 5, 6}))  # {1, 2, 3, 4, 5, 6}
+    print({1, 2, 3, 4, 5} | {3, 4, 5, 6})  # {1, 2, 3, 4, 5, 6}
+
+
+# There are organs in the first list that are not in the second
+def Difference():
+    print({1, 2, 3, 4}.difference({2, 3, 5}))  # {1, 4}
+    print({1, 2, 3, 4} - {2, 3, 5})  # {1, 4}
+
+
+# The different organs between 2 lists
+def Symmetric_difference_with():
+    print({1, 2, 3, 4}.symmetric_difference({2, 3, 5}))  # {1, 4, 5}
+    print({1, 2, 3, 4} ^ {2, 3, 5})  # {1, 4, 5}
+
+
+# If the organ is on the list
+def Existence_check():
+    2 in {1, 2, 3}  # True
+    4 in {1, 2, 3}  # False
+    4 not in {1, 2, 3}  # True
+
+
+# add and remove from list
+def Add_and_Remove():
+    s = {1, 2, 3}
+    s.add(4)  # s == {1,2,3,4}
+    s.discard(3)  # s == {1,2,4}
+    s.discard(5)  # s == {1,2,4}
+    s.remove(2)  # s == {1,4}
+    s.remove(2)  # KeyError!
+    s.update({3, 4})  # s == {1, 2, 3, 4}
+
+
+# Shape list separator
+def join():
+    the_list = ["4", "300", "60", "2"]
+    the_char = input("enter char: ")
+    the_char_in_the_list = str(the_char + " ").join(the_list)
+    print(the_char_in_the_list)
+
+
+# take a part from string
+def mahrozet():
+    letters = "abcdefghijklmnopqrstuvwxyz"
+    a = letters[16:13:-1]
+    print(a)
+
+
+# the function split
+def learn_split():
+    txt = "welcome to the jungle"
+    x = txt.split()
+    print(x)
+
+
+# def join to a list
+def learn_join():
+    myTuple = ("John", "Peter", "Vicky")
+    x = "#".join(myTuple)
+    print(x)
+
+
+# map, squart for number
+def learn_map():
+    def squart(num):
+        return num ** 2
+
+    list_of_num_for_squart = [4, 5, 33, 9, 12, 23]
+    result = map(squart, list_of_num_for_squart)
+    print(list(result))
+
+
+# for in one line
+def two_kind_of_for():
+    my_money_list = []
+    for i in range(100):
+        my_money_list.append(i ** 2)
+    my_money_small_list = [x ** 2 for x in range(100)]
+    print(my_money_list)
+    print(my_money_small_list)
+
+
+# small letter to big
+def learn_upper():
+    letter = ['a', 'b', 'c']
+    upper_letter = [x.upper() for x in letter]
+    print(upper_letter)
+
+
+# chack if you more then 18 and less then 30
+def check_age():
+    age = int(input("enter your age: "))
+    if 18 < age < 31:
+        print("welcome")
+    else:
+        print("sorry you cant come in")
+
+
+# guss random number
+def guss_random_number():
+    the_random_number = random.randint(1, 1000)
+    user_guss = 0
+    The_big_range = 1000
+    The_small_range = 0
+    print(the_random_number)
+    while user_guss != the_random_number:
+        user_guss = int(input("enter a num: "))
+        if user_guss == the_random_number:
+            print("good gess")
+        elif user_guss < the_random_number:
+            print("gess bigger")
+            The_small_range = user_guss
+            print("Now guess between {} {}".format(The_small_range, The_big_range))
+        else:
+            print("gess lower")
+            The_big_range = user_guss
+            print("Now guess between {} {}".format(The_small_range, The_big_range))
+
+
+# i need to gess the number
+def im_guss_a_number():
+    mini = int(input("choose minimum number to guess"))
+    maxi = int(input("choose maximum number to guess"))
+    himor = (mini + maxi) // 2
+    guess = input("your number is {} ?".format(himor))
+    while True:
+        if guess == "l":
+            maxi = himor
+        elif guess == "h":
+            mini = himor
+        else:
+            print("I am really good")
+            break
+        himor = (mini + maxi) // 2
+        guess = input("your number is {} ?".format(himor))
+
+
+# TODO
+# FIXME
+# Actions that do on numbers
+def operatorim_of_math():
+    x = 23
+    x += 1
+    print(x)  # 24
+    x -= 4
+    print(x)  # 20
+    x *= 5
+    print(x)  # 100
+    x //= 4
+    print(x)  # 25
+    x /= 5
+    print(x)  # 5.0 - note conversion from int to float
+    x **= 2
+    print(x)  # 25.0 - x still represents a float
+    x %= 5
+    print(x)  # 0.0 - 25 is exactly divisible by 5
+    greeting = "Good "
+    greeting += "morning"
+    print(greeting)
+    greeting *= 5
+    print(greeting)
+
+
+#
+def know_what_the_user_chose():
+    print("please choose your optionfrom the list below")
+    the_option = ["exit", "learn python", "learn java", "go swiming", "have a dinner", "go to bed"]
+    number_of_Organs = len(the_option)
+    while True:
+        for item in the_option:
+            print("{} . {} ".format(the_option.index(item), item))
+        user_option = int(input("enter the option you want: "))
+        if user_option == 0:
+            print("goodbye")
+            break
+        elif user_option in range(0, number_of_Organs):
+            print("{} . {} is your choise ".format(the_option.index(item), item))
+            break
+
+
+#
+def learn_enumerate():
+    know_what_the_user_chose()
+    available_parts = ["computer",
+                       "monitor",
+                       "keyboard",
+                       "mouse",
+                       "mouse mat",
+                       "hdmi cable",
+                       "dvd drive"
+                       ]
+    current_choice = "-"
+    computer_parts = []  # create an empty list
+
+    while current_choice != '0':
+        if current_choice in "123456":
+            print("Adding {}".format(current_choice))
+            if current_choice == '1':
+                computer_parts.append("computer")
+            elif current_choice == '2':
+                computer_parts.append("monitor")
+            elif current_choice == '3':
+                computer_parts.append("keyboard")
+            elif current_choice == '4':
+                computer_parts.append("mouse")
+            elif current_choice == '5':
+                computer_parts.append("mouse mat")
+            elif current_choice == '6':
+                computer_parts.append("hdmi cable")
+            else:
+                print("Please add options from the list below:")
+            for number, part in enumerate(available_parts):
+                print("{0}: {1}".format(number + 1, part))
+        current_choice = input()
+    print(computer_parts)
+
+
+# make a number to a letter
+def print_retzah():
+    for index, character in enumerate("abcdefghijklmnopqrstuvwxyz"):
+        print("{} . {}".format(index, character))
+
+
+# ptint the value in bunary
+def binary():
+    for i in range(17):
+        print("{0:>2} in binary is {0:>08b}".format(i))
+
+
+# how to get a file
+def used_files():
+    the_file = open("C:\\pyCharmProjects\\files\\file.txt", "r")
+    for line in the_file:
+        if "a" in line.lower():
+            print(line, end='')
+    # print(the_file.read())
+    with open("file.txt", 'r') as jabber:
+        lines = jabber.readlines()
+    print(lines)
+
+    for line in lines[::-1]:
+        print(line, end='')
+
+    with open("file.txt", 'r') as jabber:
+        lines = jabber.read()
+
+    for line in lines[::-1]:
+        print(line, end='')
+    the_file.close()
+
+
+# open somesing in browser
+def open_somesing_in_browser():
+    webbrowser.open("https://www.youtube.com/")
+    help(webbrowser)
+
+
+# Draw a drawing
+def Draw_a_drawing():
+    done = "well done"
+    # forward(150)
+    # right(250)
+    # forward(150)
+    # circle(75)
+    for i in range(10, 100, 20):
+        circle(i)
+    done()
+    print(done)
+
+
+# 3 different time
+# https://docs.python.org/3/library/time.html
+def time_thing():
+    print(time.gmtime(0))
+    print(time.localtime())
+    print(time.time())
+    time_here = time.localtime()
+    print(time_here)
+    print("Year:", time_here[0], time_here.tm_year)
+    print("Month:", time_here[1], time_here.tm_mon)
+    print("Day:", time_here[2], time_here.tm_mday)
+
+
+from time import time as my_timer
+import time
+
+# A game that measures reaction time
+def stop_fast():
+    input("Press enter to start")
+
+    wait_time = random.randint(1, 6)
+    time.sleep(wait_time)
+    start_time = my_timer()
+    input("Press enter to stop")
+
+    end_time = my_timer()
+
+    print("\n Started at " + time.strftime("%X", time.localtime(start_time)))
+    print("Ended at " + time.strftime("%X", time.localtime(end_time)))
+
+    print("Your reaction time was {} seconds".format(end_time - start_time))
+
+
+import tkinter
+
+
+# A pop-up window
+def A_pop_up_window():
+    print((tkinter.TkVersion))
+    print((tkinter.TkVersion))
+    tkinter._test()
+    for i in range(3):
+        tkinter._test()
+
+
+def pop_screen():
+    main_window = tkinter.Tk()
+    main_window.title("hello")
+    main_window.geometry('640x480')
+    main_window.mainloop()
